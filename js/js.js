@@ -18,7 +18,7 @@ function TouchSlider(opt){
 	})(opt.imgData,opt.root);
 	this.page = 0;
 	this.init();
-	this.randerDom();
+	this.renderDom();
 	this.bindDom();
 }
 TouchSlider.prototype.init = function(){
@@ -37,7 +37,7 @@ TouchSlider.prototype.init = function(){
 	wrap.appendChild(ul);
 
 }
-TouchSlider.prototype.randerDom = function(){
+TouchSlider.prototype.renderDom = function(){
 	var $li = $('li');
 	var w = this.w;
 	//$(li).css({'-webkit-transform':'translate3d('+i*node.clientWidth+'px,0,0)'})
@@ -103,7 +103,7 @@ TouchSlider.prototype.pageTurn = function(){
 		}		
 		_this.currentPage.animate({'-webkit-transform':'translate3d('+ _this.w+'px,0,0)'},200);
 		_this.prevPage.animate({'-webkit-transform':'translate3d(0,0,0)'},200,function(){
-			_this.randerDom();
+			_this.renderDom();
 		})
 	}
 	else if(_this.m_x<_this.s_x){  //左滑
@@ -114,7 +114,7 @@ TouchSlider.prototype.pageTurn = function(){
 		}
 		_this.currentPage.animate({'-webkit-transform':'translate3d('+ -_this.w+'px,0,0)'},200);
 		_this.nextPage.animate({'-webkit-transform':'translate3d(0,0,0)'},200,function(){
-			_this.randerDom();
+			_this.renderDom();
 		})
 	}
 }
