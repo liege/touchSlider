@@ -69,6 +69,7 @@ TouchSlider.prototype.bindDom = function(){
 
 	}
 	var move = function(e){
+		e.preventDefault();
 		_this.m_x = e.touches[0].pageX;
 		_this.m_y = e.touches[0].pageY;
 		_this.disX = _this.m_x-_this.s_x;
@@ -83,9 +84,9 @@ TouchSlider.prototype.bindDom = function(){
 			_this.pageTurn();
 		}
 		else{	//距离不够，翻页失败
-			_this.currentPage.animate({'-webkit-transform':'translate3d(0,0,0)'})
-			_this.nextPage.animate({'-webkit-transform':'translate3d('+_this.w+'px,0,0)'})
-			_this.prevPage.animate({'-webkit-transform':'translate3d('+ -_this.w+'px,0,0)'})
+			_this.currentPage.animate({'-webkit-transform':'translate3d(0,0,0)'},200)
+			_this.nextPage.animate({'-webkit-transform':'translate3d('+_this.w+'px,0,0)'},200)
+			_this.prevPage.animate({'-webkit-transform':'translate3d('+ -_this.w+'px,0,0)'},200)
 		}
 	}
 	$(document).on("touchstart","#slider li",start);
@@ -100,8 +101,8 @@ TouchSlider.prototype.pageTurn = function(){
 		}else{
 			_this.page--;
 		}		
-		_this.currentPage.animate({'-webkit-transform':'translate3d('+ _this.w+'px,0,0)'},400);
-		_this.prevPage.animate({'-webkit-transform':'translate3d(0,0,0)'},400,function(){
+		_this.currentPage.animate({'-webkit-transform':'translate3d('+ _this.w+'px,0,0)'},200);
+		_this.prevPage.animate({'-webkit-transform':'translate3d(0,0,0)'},200,function(){
 			_this.randerDom();
 		})
 	}
@@ -111,8 +112,8 @@ TouchSlider.prototype.pageTurn = function(){
 		}else{
 			_this.page++;
 		}
-		_this.currentPage.animate({'-webkit-transform':'translate3d('+ -_this.w+'px,0,0)'},400);
-		_this.nextPage.animate({'-webkit-transform':'translate3d(0,0,0)'},400,function(){
+		_this.currentPage.animate({'-webkit-transform':'translate3d('+ -_this.w+'px,0,0)'},200);
+		_this.nextPage.animate({'-webkit-transform':'translate3d(0,0,0)'},200,function(){
 			_this.randerDom();
 		})
 	}
